@@ -27,23 +27,23 @@ struct Airport {
     let Destination: String
 }
 
-class Flight {
+struct Flight {
     let Destination: String
     let Status: FlightStatus
     let departureTime: Date?
     let Terminal: String?
-    init(Destination: String, Status:FlightStatus, departureTime:Date?, Terminal:String?){
-        self.Destination = Destination
-        self.Status = Status
-        self.departureTime = departureTime
-        self.Terminal = Terminal
+
         
-    }
+    
 }
 var newYork = Flight(Destination: "JFK", Status: .Delayed, departureTime: nil , Terminal: "T1B7")
+
 class DepartureBoard{
-    var Flights = [newYork]
-    
+    var FlightsDeparture: Flight
+    var currAirport = "JFK"
+    init(FlightsDeparture:Flight) {
+        self.FlightsDeparture = FlightsDeparture
+    }
 }
 
 
@@ -63,7 +63,11 @@ var brussels = Flight(Destination: "BXL", Status: .Cancelled, departureTime: nil
 var tokyo = Flight(Destination: "TKY", Status: .Scheduled, departureTime: Date(), Terminal: "T2A5")
 var losAngeles = Flight(Destination: "LAX", Status: .Delayed, departureTime: nil, Terminal: "T1B4")
 
+var list = [newYork]
 
+list.append(brussels)
+list.append(tokyo)
+list.append(losAngeles)
 
 //: ## 3. Create a free-standing function that can print the flight information from the `DepartureBoard`
 //: a. Use the function signature: `printDepartures(departureBoard:)`
@@ -73,8 +77,13 @@ var losAngeles = Flight(Destination: "LAX", Status: .Delayed, departureTime: nil
 //: c. Make your `FlightStatus` enum conform to `String` so you can print the `rawValue` String values from the `enum`. See the [enum documentation](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html).
 //:
 //: d. Print out the current DepartureBoard you created using the function
+func printDparture(departureBoard:DepartureBoard){
+    for x in departureBoard{
+        
+    }
+}
 
-
+print(list)
 
 
 //: ## 4. Make a second function to print print an empty string if the `departureTime` is nil
