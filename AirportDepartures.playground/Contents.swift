@@ -27,12 +27,12 @@ struct Airport {
     let Destination: String
 }
 
-struct Flight {
+class Flight {
     let Destination: String
-    let Status: String
+    let Status: FlightStatus
     let departureTime: Date?
-    let Terminal: String
-    init(Destination: String, Status:String, departureTime:Date?, Terminal:String){
+    let Terminal: String?
+    init(Destination: String, Status:FlightStatus, departureTime:Date?, Terminal:String?){
         self.Destination = Destination
         self.Status = Status
         self.departureTime = departureTime
@@ -40,9 +40,9 @@ struct Flight {
         
     }
 }
-var myFlights = Flight.self
+var newYork = Flight(Destination: "JFK", Status: .Delayed, departureTime: nil , Terminal: "T1B7")
 class DepartureBoard{
-    
+    var Flights = [newYork]
     
 }
 
@@ -57,6 +57,11 @@ class DepartureBoard{
 //: d. Make one of the flights have a `nil` terminal because it has not been decided yet.
 //:
 //: e. Stretch: Look at the API for [`DateComponents`](https://developer.apple.com/documentation/foundation/datecomponents?language=objc) for creating a specific time
+
+
+var brussels = Flight(Destination: "BXL", Status: .Cancelled, departureTime: nil, Terminal: nil)
+var tokyo = Flight(Destination: "TKY", Status: .Scheduled, departureTime: Date(), Terminal: "T2A5")
+var losAngeles = Flight(Destination: "LAX", Status: .Delayed, departureTime: nil, Terminal: "T1B4")
 
 
 
